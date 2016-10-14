@@ -18,16 +18,16 @@ if __name__ == '__main__':
     data=[]
     if os.path.exists(file_name):
         stat_info = os.stat(file_name)
-        while stat_info.st_size <=1048576:
+        while stat_info.st_size <=1024:
             stat_info = os.stat(file_name)
             _list = [random.randint(min_number,max_number) for x in range(0,nrr)]
             _list = [ "%04d" %x for x in _list]
-            data.extend(_list)
-            if len(data) >= 100:
-                with open(file_name,'a') as fp:
-                    wp=csv.writer(fp,delimiter=',')
-                    wp.writerow(data)
-                data=[]
+ #           data.extend(_list)
+            #if len(data) >= 100:
+            with open(file_name,'a') as fp:
+                wp=csv.writer(fp,delimiter=',')
+                wp.writerow(_list)
+#                data=[]
     print "Random R generated on %s" %file_name
     sys.exit(0)
 
